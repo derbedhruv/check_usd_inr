@@ -15,7 +15,7 @@ def getusdinr():
 
 def expectedinrformat(inr):
   # check if the INR parsed value is in expected format
-  return re.compile(EXPECTED_INR_REGEX).match(inr)
+  return re.compile(EXPECTED_INR_REGEX).match(inr) != ''
 
 if __name__ == "__main__":
   inr = getusdinr()
