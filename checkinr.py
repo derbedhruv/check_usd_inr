@@ -8,6 +8,22 @@ LENGTH_OF_DIGITS = 7
 LOG_FILENAME = "usdinr.log"
 EXPECTED_INR_REGEX = "\d\d\.\d\d\d\d"
 
+def getcachedinr():
+  # read and get latest cached INR value
+  try:
+    with open(LOG_FILENAME, 'r') as f:
+      for line in f:
+        pass
+      return int(line.split(' ')[1])
+  except:
+    # empty or missing file
+    return None
+
+def appendlatestinr(val):
+  # append latest INR value to log file
+  with open(LOG_FILENAME, 'a+') as f:
+    f.write(val + '\n') 
+
 def getusdinr():
   # call the dollar rupee website and check status
   try:
@@ -31,8 +47,10 @@ def main():
     print("{} unexpected format: {}".format(now, inr))
   # print the INR value
   print("{} {}".format(now, inr))
+  appendlatestinr("{} {}".format(now, inr))
   # check if the INR value has increased
-  if (old_value < inr):
+  old_value = getcachedinr()
+  if (not old_value or old_value < inr):
     print("New value is higher")
     return 
 
