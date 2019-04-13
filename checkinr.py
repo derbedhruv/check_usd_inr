@@ -29,6 +29,11 @@ def main():
   inr = getusdinr()
   if (not expectedinrformat(inr)):
     print("{} unexpected format: {}".format(now, inr))
+  # print the INR value
+  print("{} {}".format(now, inr))
+  # check if the INR value has increased
+  if (old_value < inr):
+    print("New value is higher")
     return 
 
 if __name__ == "__main__":
