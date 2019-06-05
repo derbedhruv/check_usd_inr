@@ -63,13 +63,10 @@ def send_message(service, user_id, message):
   Returns:
     Sent Message.
   """
-  try:
-    message = (service.users().messages().send(userId=user_id, body=message)
+  message = (service.users().messages().send(userId=user_id, body=message)
                .execute())
-    print 'Message Id: %s' % message['id']
-    return message
-  except errors.HttpError, error:
-    print 'An error occurred: %s' % error
+  print 'Message Id: %s' % message['id']
+  return message
 
 # MAIN: check xoom
 XOOM_LINK = 'https://www.xoom.com/india/send-money'
