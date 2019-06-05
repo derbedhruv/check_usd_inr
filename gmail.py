@@ -5,6 +5,7 @@
 ## Author: Dhruv Joshi
 ############################################################################
 # setup the email infrastructure
+from __future__ import print_function
 import base64
 from email.mime.text import MIMEText
 import pickle
@@ -67,6 +68,6 @@ def send_message(service, user_id, message):
   """
   message = (service.users().messages().send(userId=user_id, body=message)
                .execute())
-  print 'Message Id: %s' % message['id']
+  print('Message Id: %s' % message['id'])
   return message
 
