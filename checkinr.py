@@ -1,6 +1,6 @@
 # check if there's a high value of INR going on
 # can check as global and local maxima
-import requests, sys
+import requests, sys, datetime, pytz
 from gmail import *
 
 # MAIN: check xoom
@@ -10,7 +10,8 @@ response = requests.get(XOOM_LINK)
 loc = response.text.find('1 USD =')
 CURRENT_USD_INR_VALUE = response.text[loc+8: loc+15]
 
-print("current USD = " + CURRENT_USD_INR_VALUE)
+now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
+print("{} current USD = {}".format(now, CURRENT_USD_INR_VALUE))
 
 if (float(CURRENT_USD_INR_VALUE) >= 70.0):
   # send an email saying that it is so
