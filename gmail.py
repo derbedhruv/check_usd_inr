@@ -1,5 +1,5 @@
 ############################################################################
-## Gmail mail sending functions
+## Gmail mail sending functions - using python3
 ## REF: https://developers.google.com/gmail/api/guides/sending
 ## Valid as of Jun 5, 2019
 ## Author: Dhruv Joshi
